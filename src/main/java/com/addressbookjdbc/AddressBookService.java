@@ -1,6 +1,7 @@
 package com.addressbookjdbc;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -49,6 +50,14 @@ public class AddressBookService {
 			if (queries.getString("email").equals(email)) return true;
 		}
 		return false;
+	}
+	
+	public int getDataAccordingDate() throws SQLException {
+		Date dateStart = Date.valueOf("2018-01-01");
+		Date dateEnd = Date.valueOf("2021-12-30");
+		String query = String.format("select p.firstname,p.lastname from person_details p where date_added between '%tF' and '%tF';",dateStart,dateEnd);
+		ResultSet queries = getQuerries(query);
+		return printSet(queries);
 	}
 }
 
