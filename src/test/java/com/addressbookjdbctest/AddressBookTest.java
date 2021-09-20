@@ -1,9 +1,7 @@
 package com.addressbookjdbctest;
 
 import org.junit.Test;
-
 import java.sql.SQLException;
-
 import org.junit.Assert;
 
 import com.addressbookjdbc.AddressBookService;
