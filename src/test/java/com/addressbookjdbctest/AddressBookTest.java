@@ -22,8 +22,8 @@ public class AddressBookTest {
 	@Test
 	public void ifData_WhenUpdated_ShouldReturnSize() throws SQLException {
 		addressBookService = new AddressBookService();
-		int res = addressBookService.getUpdate("Heema","Jetty","heema123@gmail.com");
-		Assert.assertEquals(1, res);
+		boolean res = addressBookService.getUpdate("Heema","Jetty","heema123@gmail.com");
+		Assert.assertEquals(true, res);
 	
 	}
 }

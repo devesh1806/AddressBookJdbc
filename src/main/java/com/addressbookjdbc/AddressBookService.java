@@ -38,12 +38,17 @@ public class AddressBookService {
 		return statement.executeQuery(query);
 	}
 
-	public int getUpdate(String firstName, String lastName, String email) throws SQLException {
+	public boolean getUpdate(String firstName, String lastName, String email) throws SQLException {
 		String query = String.format("update person_details set email = '%s' where firstname = '%s' and lastname = '%s';",email,firstName,lastName);
 		addressBookJdbc = AddressBookJdbc.getInstance();
 		Connection connection = addressBookJdbc.dbConnect();
 		Statement statement = connection.createStatement();
-		return statement.executeUpdate(query);
+		int z = statement.executeUpdate(query);
+		ResultSet queries = getQuerries(String.format("Select email from person_details where firstname = '%s' and lastname = '%s';",firstName,lastName));
+		while(queries.next()) {
+			if (queries.getString("email").equals(email)) return true;
+		}
+		return false;
 	}
 }
 
