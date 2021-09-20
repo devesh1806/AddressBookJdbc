@@ -26,4 +26,12 @@ public class AddressBookTest {
 		Assert.assertEquals(1, res);
 	
 	}
+	
+	@Test
+	public void ifData_WhenGivenDate_ShouldReturnSize() throws SQLException {
+		addressBookService = new AddressBookService();
+		int res = addressBookService.getDataAccordingDate();
+		Assert.assertEquals(6, res);
+	
+	}
 }
